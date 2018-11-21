@@ -3,9 +3,10 @@ package io;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+
 /**
  * 将字符串文本读入，放到list中，打乱顺序，再写入到新的文件中
- * */
+ */
 public class FromTxtToListToTxt {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("test-resource/sort-test-100000words.txt"));

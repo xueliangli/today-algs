@@ -1,14 +1,39 @@
 package utils;
 
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.Date;
+
 public class SortUtil {
+
+    public static void sort(Comparable[] a) {
+
+    }
     /**
      * 判断 v 是否小于 w
+     *
+     * .compareTo() 返回值有正负零三种情况
+     * v = w 返回0   less方法返回false
+     * v < w 返回-1  less方法返回true
+     * v > w 返回1   less方法返回false
      * */
-    //.compareTo() 返回值有正负零三种情况
+    //
     public static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
+    }
+
+    /**
+     * 判断 v 是否大于 w
+     *
+     * .compareTo() 返回值有正负零三种情况
+     * v = w 返回0   more方法返回false
+     * v < w 返回-1  more方法返回false
+     * v > w 返回1   more方法返回true
+     * */
+    //
+    public static boolean more(Comparable v, Comparable w) {
+        return w.compareTo(v) < 0;
     }
 
     /**
@@ -42,4 +67,17 @@ public class SortUtil {
         return true;
     }
 
+//    public void outResult(){
+//        String[] a = In.readStrings("test-resource/sort-test-100000-words-new.txt");
+//        Date date1 = new Date();
+//        long t1 = date1.getTime();
+//        sort(a);
+//        Date date2 = new Date();
+//        long t2 = date2.getTime();
+//        assert SortUtil.isSorted(a);
+//        System.out.println("==================排序结果为=================");
+//        SortUtil.show(a);
+//        System.out.println("============================================");
+//        System.out.println("算法用时为：" + (t2 - t1) + "毫秒");
+//    }
 }
