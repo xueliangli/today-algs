@@ -50,7 +50,8 @@ public class Quick02 {
         int i = lo - 1;
         int j = hi + 1;
         int cur = lo;
-        int compare = hi;
+        //选择基准值，随机选择
+        int compare = hi-1;
         while (cur < j) {
             if (SortUtil.less(array[cur], array[compare]))
                 SortUtil.exch(array, ++i, cur++);
