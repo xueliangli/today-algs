@@ -2,7 +2,7 @@ package string;
 
 import utils.StringUtil;
 
-public class MyIndex03 {
+public class MyIndex04 {
     /**
      * KMP模式匹配算法
      * 应用场景：abcdefg 与 abcdex
@@ -37,11 +37,12 @@ public class MyIndex03 {
         return -1;
     }
 
+
     public static void main(String[] args) {
-        String str1 = "000000000000000000001";
-        String str2 = "001";
+        String str1 = "gitbook";
+        String str2 = "book";
         int[] next = new int[str2.length()];
-        StringUtil.getNext(str2, next);
+        StringUtil.getNextUp(str2, next);
         System.out.println(index(str1, str2, next));
     }
 }
