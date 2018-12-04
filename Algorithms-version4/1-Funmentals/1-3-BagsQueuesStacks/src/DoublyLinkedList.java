@@ -28,15 +28,16 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         N = 0;
     }
 
-    public DoublyLinkedList(Item[] a) {
+    DoublyLinkedList(Item[] a) {
         for (Item t : a)
             append(t);
     }
 
-    public DoublyLinkedList(Iterable<Item> coll) {
-        for (Item t : coll)
-            append(t);
-    }
+    //没有使用到
+//    DoublyLinkedList(Iterable<Item> coll) {
+//        for (Item t : coll)
+//            append(t);
+//    }
 
     //5、判断是否为空，判断元素个数
     boolean isEmpty() {
@@ -61,7 +62,7 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
     }
 
     //7、返回第k个节点
-    public DoubleNode node(int k) {
+    DoubleNode node(int k) {
         DoubleNode current = null;
         int i = 1;
 
@@ -97,7 +98,7 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         N++;
     }
 
-    public void append(Item item) {
+    void append(Item item) {
         DoubleNode x = new DoubleNode();
         x.item = item;
         if (isEmpty()) {
@@ -112,7 +113,7 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
     }
 
     //9、向前插入节点和向后插入节点
-    public void insertBefore(DoubleNode node, Item item) {
+    void insertBefore(DoubleNode node, Item item) {
         if (node.parent != this)
             throw new RuntimeException("Node does not belong to list..");
         if (node == first)
@@ -129,7 +130,7 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         }
     }
 
-    public void insertAfter(DoubleNode node,Item item){
+    void insertAfter(DoubleNode node, Item item){
         if(node.parent!=this)
             throw new RuntimeException("Node does not belong to list..");
         if(node == last){
@@ -175,7 +176,7 @@ public class DoublyLinkedList<Item> implements Iterable<Item> {
         return item;
     }
 
-    public Item remove(DoubleNode node){
+    Item remove(DoubleNode node){
         if (node.parent!=this)
             throw new RuntimeException("Node does not belong to List");
         if (node==first)

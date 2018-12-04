@@ -1,8 +1,6 @@
 
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
 
@@ -34,7 +32,7 @@ public class Stack<Item> implements Iterable<Item> {
     /**
      * 构造一个空栈
      */
-    public Stack() {
+    private Stack() {
         first = null;
         N = 0;
     }
@@ -42,32 +40,32 @@ public class Stack<Item> implements Iterable<Item> {
     /**
      * 判断栈是否为空
      */
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         return first == null;
     }
 
     /**
      * 返回栈中元素的个数
      */
-    public int size() {
+    private int size() {
         return N;
     }
 
     /**
      * 入栈操作
      */
-    public void push(Item item) {
-        Node oldfirst = first;
+    private void push(Item item) {
+        Node oldFirst = first;
         first = new Node();
         first.item = item;
-        first.next = oldfirst;
+        first.next = oldFirst;
         N++;
     }
 
     /**
      * 出栈操作
      */
-    public Item pop() {
+    private Item pop() {
         if (isEmpty())
             throw new RuntimeException("Stack underflow");
         Item item = first.item;

@@ -27,7 +27,7 @@ public class Queue<Item> implements Iterable<Item>{
     /**
      * 空队列
      * */
-    public Queue(){
+    private Queue(){
         first=null;
         last=null;
         N=0;
@@ -37,9 +37,9 @@ public class Queue<Item> implements Iterable<Item>{
      * 入队操作
      * */
     private boolean isEmpty(){ return first==null; }
-    public int size(){ return N; }
+    private int size(){ return N; }
 
-    public void enqueue(Item item){
+    private void enqueue(Item item){
         Node x = new Node();
         x.item=item;
         if (isEmpty()){
@@ -55,7 +55,7 @@ public class Queue<Item> implements Iterable<Item>{
     /**
      * 出队操作
      * */
-    public Item dequeue(){
+    private Item dequeue(){
         if (isEmpty())
             throw new RuntimeException("Queue underflow");
         Item item = first.item;
@@ -98,7 +98,7 @@ public class Queue<Item> implements Iterable<Item>{
     }
 
     public static void main(String[] args) {
-        Queue<String> s = new Queue<String>();
+        Queue<String> s = new Queue<>();
         String[] items = In.readStrings("tobe.txt");
         for (String item : items) {
             if (!item.equals("-"))

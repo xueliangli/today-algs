@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.In;
+
 import java.util.Iterator;
 
 public class FixedCapacityStack<Item> implements Iterable<Item> {
@@ -5,25 +7,25 @@ public class FixedCapacityStack<Item> implements Iterable<Item> {
     private Item[] a;
     private int N;
 
-    public FixedCapacityStack(int capacity){
+    private FixedCapacityStack(int capacity){
         a=(Item[]) new Object[capacity];
     }
 
-    public boolean isEmpty(){
+    private boolean isEmpty(){
         return N==0;
     }
 
-    public void push(Item item){
+    private void push(Item item){
         a[N++]=item;
     }
 
-    public Item pop(){
+    private Item pop(){
         return a[--N];
     }
 
     @Override
     public Iterator<Item> iterator() {
-        return null;
+        return new ReverseArrayIterator();
     }
 
     public class ReverseArrayIterator implements Iterator<Item>{
@@ -47,17 +49,22 @@ public class FixedCapacityStack<Item> implements Iterable<Item> {
         }
     }
 
+    /**
+     * output :
+     * to be not that or be
+     * Left on stack: is to
+     *
+     * */
     public static void main(String[] args) {
-        int max = Integer.parseInt(args[0]);
-        FixedCapacityStack<String> stack = new FixedCapacityStack<String>(max);
-        while (!StdIn.isEmpty()) {
-            String item = StdIn.readString();
+        String[] items = In.readStrings("tobe.txt");
+        int max=items.length;
+        FixedCapacityStack<String> stack = new FixedCapacityStack<>(max);
+        for (String item:items) {
             if (!item.equals("-")) stack.push(item);
             else if (stack.isEmpty()) StdOut.println("BAD INPUT");
             else StdOut.print(stack.pop() + " ");
         }
         StdOut.println();
-
         StdOut.print("Left on stack: ");
         for (String s : stack) {
             StdOut.print(s + " ");
