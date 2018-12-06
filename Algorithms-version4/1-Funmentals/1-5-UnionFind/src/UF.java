@@ -64,29 +64,29 @@ public class UF {
 
     public static void main(String[] args) {
         //用这个方法需要在控制台输入，并且
-        System.out.println("请输入数字对：\n");
+//        System.out.println("请输入数字对：\n");
         int N = StdIn.readInt();
         UF uf = new UF(N);
 
         // read in a sequence of pairs of integers (each in the range 0 to N-1),
         // calling find() for each pair: If the members of the pair are not already
         // call union() and print the pair.
-        for (int i = 1; i < N; i++) {
-            int p = StdIn.readInt();
-            int q = StdIn.readInt();
-            if (uf.connected(p, q)) continue;
-            uf.union(p, q);
-            StdOut.println(p + " " + q);
-        }
-
-        //这种循环总是不输出最后一行
-//        while(!StdIn.isEmpty()){
+//        for (int i = 1; i < N; i++) {
 //            int p = StdIn.readInt();
 //            int q = StdIn.readInt();
 //            if (uf.connected(p, q)) continue;
 //            uf.union(p, q);
 //            StdOut.println(p + " " + q);
 //        }
+
+        //这种循环总是不输出最后一行
+        while(!StdIn.isEmpty()){
+            int p = StdIn.readInt();
+            int q = StdIn.readInt();
+            if (uf.connected(p, q)) continue;
+            uf.union(p, q);
+            StdOut.println(p + " " + q);
+        }
 
         StdOut.println("# components: " + uf.count());
     }
