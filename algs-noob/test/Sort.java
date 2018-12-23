@@ -6,6 +6,9 @@ import edu.princeton.cs.algs4.In;
 import org.junit.Test;
 import java.util.Date;
 
+import static algs.sort.ShellSort.shellSort01;
+import static algs.sort.ShellSort.shellSort02;
+
 public class Sort {
     /**
      * 第一种快速排序算法
@@ -59,6 +62,52 @@ public class Sort {
         SortUtil.show(a);
         System.out.println("============================================");
         System.out.println("算法用时为：" + (t2 - t1) + "毫秒");
+
+    }
+
+    /**
+     * 希尔排序算法
+     * */
+    @Test
+    public void testShellSort01() {
+        int i;
+        int a[] = {80,30,60,40,20,10,50,70};
+
+        System.out.print("before sort:");
+        for (i=0; i<a.length; i++)
+            System.out.printf("%d ", a[i]);
+        System.out.print("\n");
+
+        shellSort01(a, a.length);
+        //shellSort02(a, a.length);
+
+        System.out.print("after  sort:");
+        for (i=0; i<a.length; i++)
+            System.out.printf("%d ", a[i]);
+        System.out.print("\n");
+
+    }
+
+    /**
+     * 希尔排序算法
+     * */
+    @Test
+    public void testShellSort02() {
+        int i;
+        int a[] = {80,30,60,40,20,10,50,70};
+
+        System.out.print("before sort:");
+        for (i=0; i<a.length; i++)
+            System.out.printf("%d ", a[i]);
+        System.out.print("\n");
+
+        shellSort02(a, a.length);
+        //shellSort02(a, a.length);
+
+        System.out.print("after  sort:");
+        for (i=0; i<a.length; i++)
+            System.out.printf("%d ", a[i]);
+        System.out.print("\n");
 
     }
 }

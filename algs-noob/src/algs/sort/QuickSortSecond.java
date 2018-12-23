@@ -5,7 +5,6 @@ import edu.princeton.cs.algs4.StdRandom;
  *
  * 第二种快速排序的方法：
  *
- *
  *************************************************************************/
 public class QuickSortSecond {
     /**

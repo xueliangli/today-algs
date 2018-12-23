@@ -1,23 +1,105 @@
-import data_structure.queue.MyQueue;
-import data_structure.tree.MyAVLTree;
-import data_structure.tree.MyBSTree;
+import data_structure.domain.Student;
+import data_structure.linked_list.DoubleLink;
+import data_structure.queue.Queue;
+import data_structure.tree.AVLTree;
+import data_structure.tree.BSTree;
 import org.junit.Test;
 
 public class DataStructure {
+    /**
+     *
+     * 关于双向链表的测试
+     *
+     * */
+    @Test
+    public void testDoubleLink(){
+        int[] arr = {10, 20, 30, 40};
+
+        System.out.println("\n----int_test----");
+        // 创建双向链表
+        DoubleLink<Integer> integerDoubleLink = new DoubleLink<>();
+
+        integerDoubleLink.insert(0, arr[1]);    // 将 20 插入到第一个位置
+        integerDoubleLink.appendLast(arr[0]);    // 将 10 追加到链表末尾
+        integerDoubleLink.insertFirst(arr[2]);    // 将 30 插入到第一个位置
+
+        // 双向链表是否为空
+        System.out.printf("isEmpty()=%b\n", integerDoubleLink.isEmpty());
+        // 双向链表的大小
+        System.out.printf("size()=%d\n", integerDoubleLink.size());
+
+        // 打印出全部的节点
+        for (int i=0; i<integerDoubleLink.size(); i++)
+            System.out.println("integerDoubleLink("+i+")="+ integerDoubleLink.getData(i));
+        //=================================================================================
+        String[] sarr = {"ten", "twenty", "thirty", "forty"};
+
+        System.out.println("\n----string_test----");
+        // 创建双向链表
+        DoubleLink<String> stringDoubleLink = new DoubleLink<>();
+
+        stringDoubleLink.insert(0, sarr[1]);    // 将 sarr中第2个元素 插入到第一个位置
+        stringDoubleLink.appendLast(sarr[0]);    // 将 sarr中第1个元素 追加到链表末尾
+        stringDoubleLink.insertFirst(sarr[2]);    // 将 sarr中第3个元素 插入到第一个位置
+
+        // 双向链表是否为空
+        System.out.printf("isEmpty()=%b\n", stringDoubleLink.isEmpty());
+        // 双向链表的大小
+        System.out.printf("size()=%d\n", stringDoubleLink.size());
+
+        // 打印出全部的节点
+        for (int i=0; i<stringDoubleLink.size(); i++)
+            System.out.println("stringDoubleLink("+i+")="+ stringDoubleLink.getData(i));
+        //=================================================================================
+        Student[] students = new Student[]{
+                new Student(10, "sky"),
+                new Student(20, "jody"),
+                new Student(30, "vic"),
+                new Student(40, "dan"),
+        };
+        System.out.println("\n----object_test----");
+        // 创建双向链表
+        DoubleLink<Student> studentDoubleLink = new DoubleLink<>();
+
+        studentDoubleLink.insert(0, students[1]);    // 将 students中第2个元素 插入到第一个位置
+        studentDoubleLink.appendLast(students[0]);    // 将 students中第1个元素 追加到链表末尾
+        studentDoubleLink.insertFirst(students[2]);    // 将 students中第3个元素 插入到第一个位置
+
+        // 双向链表是否为空
+        System.out.printf("isEmpty()=%b\n", studentDoubleLink.isEmpty());
+        // 双向链表的大小
+        System.out.printf("size()=%d\n", studentDoubleLink.size());
+
+        // 打印出全部的节点
+        for (int i=0; i<studentDoubleLink.size(); i++) {
+            System.out.println("studentDoubleLink("+i+")="+ studentDoubleLink.getData(i));
+        }
+    }
+
+    /**
+     *
+     * 关于队列的测试
+     *
+     * */
     @Test
     public void testMyQueue(){
-        MyQueue<Integer> ints = new MyQueue<>();
+        Queue<Integer> ints = new Queue<>();
         for (int i = 0; i < 10; i++) {
             ints.enqueue(i);
         }
         ints.displayList();
     }
 
+    /**
+     *
+     * 关于二叉树的测试
+     *
+     * */
     @Test
     public void testMyBSTree(){
         int i, len;
         int[] arr={7,3,8,4,3,1,0,9,6};
-        MyBSTree<Integer> tree = new MyBSTree<>();
+        BSTree<Integer> tree = new BSTree<>();
 
         System.out.print("== 依次添加: ");
         len = arr.length;
@@ -38,12 +120,17 @@ public class DataStructure {
         tree.postOrder();
     }
 
+    /**
+     *
+     * 关于自平衡二叉树的测试
+     *
+     * */
     @Test
     public void testMyAVLTree(){
         int arr[]= {3,2,1,4,5,6,7,16,15,14,13,12,11,10,8,9};
 
         int i;
-        MyAVLTree<Integer> tree = new MyAVLTree<>();
+        AVLTree<Integer> tree = new AVLTree<>();
 
         System.out.print("== 依次添加: ");
         for(i=0; i<arr.length; i++) {
@@ -76,7 +163,6 @@ public class DataStructure {
         tree.inOrder();
         System.out.print("\n== 树的详细信息: \n");
         tree.print();
-
         // 销毁二叉树
         tree.destroy();
     }
