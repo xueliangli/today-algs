@@ -61,7 +61,7 @@ public class Permutations {
      * Permutations of numbers in an array using recursion
      * <br>
      * int numbers[] = {7,5,3};
-     * LinkedList<LinkedList<Integer>> result = getAllPermutations(numbers);
+     * SingleLink<SingleLink<Integer>> result = getAllPermutations(numbers);
      */
     public static final <N extends Number> List<List<N>> getAllPermutations(final N[] numbers){
         final List<List<N>> result = new LinkedList<List<N>>();

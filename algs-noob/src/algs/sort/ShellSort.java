@@ -85,22 +85,4 @@ public class ShellSort {
                 groupSort(a, n, i, gap);
         }
     }
-
-    public static void main(String[] args) {
-        int i;
-        int a[] = {80,30,60,40,20,10,50,70};
-
-        System.out.print("before sort:");
-        for (i=0; i<a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.print("\n");
-
-        shellSort01(a, a.length);
-        //shellSort02(a, a.length);
-
-        System.out.print("after  sort:");
-        for (i=0; i<a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.print("\n");
-    }
 }

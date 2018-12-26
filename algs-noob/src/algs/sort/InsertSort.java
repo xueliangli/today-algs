@@ -1,15 +1,14 @@
 package algs.sort;
 
 public class InsertSort {
-
-    /*
+    /**
      * 直接插入排序
      *
      * 参数说明：
-     *     a -- 待排序的数组
-     *     n -- 数组的长度
+     * @param a 待排序的数组
+     * @param n 数组的长度
      */
-    public static void insertSort(int[] a, int n) {
+    static void insertSort(int[] a, int n) {
         int i, j, k;
 
         for (i = 1; i < n; i++) {
@@ -29,22 +28,5 @@ public class InsertSort {
                 a[k + 1] = temp;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        int i;
-        int[] a = {20,40,30,10,60,50};
-
-        System.out.printf("before sort:");
-        for (i=0; i<a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.printf("\n");
-
-        insertSort(a, a.length);
-
-        System.out.printf("after  sort:");
-        for (i=0; i<a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.printf("\n");
     }
 }

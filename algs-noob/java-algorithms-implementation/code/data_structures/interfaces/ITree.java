@@ -6,7 +6,7 @@ package com.jwetherell.algorithms.data_structures.interfaces;
  * with the constraints that no node is duplicated. A tree can be defined abstractly as a whole (globally) 
  * as an ordered tree, with a value assigned to each node.
  * <p>
- * @see <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">Tree (Wikipedia)</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Tree_(datastructure)">Tree (Wikipedia)</a>
  * <br>
  * @author Justin Wetherell <phishman3579@gmail.com>
  */

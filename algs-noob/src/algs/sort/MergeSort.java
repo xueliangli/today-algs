@@ -1,15 +1,14 @@
 package algs.sort;
 
 public class MergeSort {
-
-    /*
+    /**
      * 将一个数组中的两个相邻有序区间合并成一个
      *
      * 参数说明：
-     *     a -- 包含两个有序区间的数组
-     *     start -- 第1个有序区间的起始地址。
-     *     mid   -- 第1个有序区间的结束地址。也是第2个有序区间的起始地址。
-     *     end   -- 第2个有序区间的结束地址。
+     * @param a 包含两个有序区间的数组
+     * @param start 第1个有序区间的起始地址。
+     * @param mid 第1个有序区间的结束地址。也是第2个有序区间的起始地址。
+     * @param end 第2个有序区间的结束地址。
      */
     public static void merge(int[] a, int start, int mid, int end) {
         int[] tmp = new int[end-start+1];    // tmp是汇总2个有序区的临时区域
@@ -33,19 +32,17 @@ public class MergeSort {
         // 将排序后的元素，全部都整合到数组a中。
         for (i = 0; i < k; i++)
             a[start + i] = tmp[i];
-
-        tmp=null;
     }
 
-    /*
+    /**
      * 归并排序(从上往下)
      *
      * 参数说明：
-     *     a -- 待排序的数组
-     *     start -- 数组的起始地址
-     *     endi -- 数组的结束地址
+     * @param a 待排序的数组
+     * @param start 数组的起始地址
+     * @param end 数组的结束地址
      */
-    public static void mergeSortUp2Down(int[] a, int start, int end) {
+    static void mergeSortUp2Down(int[] a, int start, int end) {
         if(a==null || start >= end)
             return ;
 
@@ -59,16 +56,16 @@ public class MergeSort {
     }
 
 
-    /*
+    /**
      * 对数组a做若干次合并：数组a的总长度为len，将它分为若干个长度为gap的子数组；
      *             将"每2个相邻的子数组" 进行合并排序。
      *
      * 参数说明：
-     *     a -- 待排序的数组
-     *     len -- 数组的长度
-     *     gap -- 子数组的长度
+     * @param a 待排序的数组
+     * @param len 数组的长度
+     * @param gap 子数组的长度
      */
-    public static void mergeGroups(int[] a, int len, int gap) {
+    private static void mergeGroups(int[] a, int len, int gap) {
         int i;
         int twolen = 2 * gap;    // 两个相邻的子数组的长度
 
@@ -82,11 +79,11 @@ public class MergeSort {
             merge(a, i, i + gap - 1, len - 1);
     }
 
-    /*
+    /**
      * 归并排序(从下往上)
      *
      * 参数说明：
-     *     a -- 待排序的数组
+     * @param a 待排序的数组
      */
     public static void mergeSortDown2Up(int[] a) {
         if (a==null)
@@ -94,23 +91,5 @@ public class MergeSort {
 
         for(int n = 1; n < a.length; n*=2)
             mergeGroups(a, a.length, n);
-    }
-
-    public static void main(String[] args) {
-        int i;
-        int a[] = {80,30,60,40,20,10,50,70};
-
-        System.out.print("before sort:");
-        for (i=0; i<a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.print("\n");
-
-        mergeSortUp2Down(a, 0, a.length-1);        // 归并排序(从上往下)
-        //mergeSortDown2Up(a);                    // 归并排序(从下往上)
-
-        System.out.print("after  sort:");
-        for (i=0; i<a.length; i++)
-            System.out.printf("%d ", a[i]);
-        System.out.print("\n");
     }
 }

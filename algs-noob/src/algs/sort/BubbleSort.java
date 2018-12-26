@@ -10,7 +10,7 @@ import algs.sort.utils.SortUtil;
  *
  *************************************************************************/
 public class BubbleSort {
-    private static void sort(Comparable[] a) {
+    static void sort(Comparable[] a) {
         for (int i = 0; i < a.length-1; i++) {
             for (int j = 0; j < a.length-i-1; j++) {
                 if (SortUtil.less(a[j+1],a[j])) {
@@ -18,11 +18,5 @@ public class BubbleSort {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        String[] a={"2","4","6","1","3","7","9","5"};
-        BubbleSort.sort(a);
-        SortUtil.show(a);
     }
 }

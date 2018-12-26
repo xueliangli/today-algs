@@ -5,28 +5,10 @@ package algs.sort;
  *
  *************************************************************************/
 public class HeapSort {
-
-    public static void main(String[] args) {
-        int[] arr = { 50, 10, 90, 30, 70, 40, 80, 60, 20 };
-        System.out.println("排序之前：");
-        for (int anArr : arr) {
-            System.out.print(anArr + " ");
-        }
-
-        // 堆排序
-        heapSort(arr);
-
-        System.out.println();
-        System.out.println("排序之后：");
-        for (int anArr : arr) {
-            System.out.print(anArr + " ");
-        }
-    }
-
     /**
      * 堆排序
      */
-    private static void heapSort(int[] arr) {
+    static void heapSort(int[] arr) {
         // 将待排序的序列构建成一个大顶堆
         for (int i = arr.length / 2; i >= 0; i--){
             heapAdjust(arr, i, arr.length);
