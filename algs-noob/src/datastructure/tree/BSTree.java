@@ -61,7 +61,7 @@ public class BSTree<Item extends Comparable> {
     /**
      * 树的构造器
      * */
-    public BSTree() {
+    BSTree() {
         mRoot = null;
     }
 
@@ -127,7 +127,7 @@ public class BSTree<Item extends Comparable> {
         }
     }
 
-    public void preOrder() {
+    void preOrder() {
         preOrder(mRoot);
     }
 
@@ -139,7 +139,7 @@ public class BSTree<Item extends Comparable> {
         }
     }
 
-    public void inOrder() {
+    void inOrder() {
         inOrder(mRoot);
     }
 
@@ -152,7 +152,7 @@ public class BSTree<Item extends Comparable> {
         }
     }
 
-    public void postOrder() {
+    void postOrder() {
         postOrder(mRoot);
     }
 }

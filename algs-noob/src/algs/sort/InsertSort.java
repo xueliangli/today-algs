@@ -1,6 +1,6 @@
 package algs.sort;
 
-public class InsertSort {
+class InsertSort {
     /**
      * 直接插入排序
      *

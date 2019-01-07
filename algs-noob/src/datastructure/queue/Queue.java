@@ -1,8 +1,5 @@
 package datastructure.queue;
 
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
-
 /*************************************************************************
  *
  * 基于链表,队列的一种基本实现：
@@ -66,7 +63,7 @@ public class Queue<Item> {
         return data;
     }
 
-    public void displayList() {
+    void displayList() {
         Node cur = first;
         while (cur != null) {
             System.out.print("\t" + cur.data + "->");

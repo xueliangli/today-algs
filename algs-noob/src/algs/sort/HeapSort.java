@@ -4,7 +4,7 @@ package algs.sort;
  * 堆排序：
  *
  *************************************************************************/
-public class HeapSort {
+class HeapSort {
     /**
      * 堆排序
      */

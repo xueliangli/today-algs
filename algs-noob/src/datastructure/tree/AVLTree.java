@@ -31,7 +31,7 @@ public class AVLTree<T extends Comparable<T>> {
     /**
      * 构造函数
      */
-    public AVLTree() {
+    AVLTree() {
         mRoot = null;
     }
 
@@ -67,7 +67,7 @@ public class AVLTree<T extends Comparable<T>> {
         }
     }
 
-    public void preOrder() {
+    void preOrder() {
         preOrder(mRoot);
     }
 
@@ -82,7 +82,7 @@ public class AVLTree<T extends Comparable<T>> {
         }
     }
 
-    public void inOrder() {
+    void inOrder() {
         inOrder(mRoot);
     }
 
@@ -97,7 +97,7 @@ public class AVLTree<T extends Comparable<T>> {
         }
     }
 
-    public void postOrder() {
+    void postOrder() {
         postOrder(mRoot);
     }
 
@@ -253,8 +253,8 @@ public class AVLTree<T extends Comparable<T>> {
     private AVLTreeNode<T> insert(AVLTreeNode<T> tree, T key) {
         if (tree == null) {
             // 新建节点
-            tree = new AVLTreeNode<T>(key, null, null);
-            if (tree == null) {
+            tree = new AVLTreeNode<>(key, null, null);
+            if (null == tree) {
                 System.out.println("ERROR: create avltree node failed!");
                 return null;
             }
