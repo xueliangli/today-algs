@@ -5,84 +5,113 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /*************************************************************************
+ *
  *  通过 TreeMap 实现符号表
  *
- *  Compilation:  javac ST.java
- *  Execution:    java ST
- *
- *  Sorted symbol table implementation using a java.util.TreeMap.
- *  Does not allow duplicates.
- *
- *  % java ST
- *
  *************************************************************************/
-public class ST<Key extends Comparable<Key>,Value> implements Iterable<Key> {
-    private TreeMap<Key,Value> st;
-    public ST(){
+public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
+    private TreeMap<Key, Value> st;
+
+    public ST() {
         st = new TreeMap<>();
     }
-    public void put(Key key,Value val){
-        if (val==null) st.remove(key);
-        else st.put(key,val);
+
+    public void put(Key key, Value val) {
+        if (val == null) st.remove(key);
+        else st.put(key, val);
     }
+
     /**
-     * Return the value paired with given key; null if key is not in table.
+     * @description: 返回指定健对应的值
+     * @param: [key]
+     * @return: Value
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:11
      */
     public Value get(Key key) {
         return st.get(key);
     }
 
     /**
-     * Delete the key (and paired value) from table.
-     * Return the value paired with given key; null if key is not in table.
+     * @description: 删除指定的健
+     * @param: [key]
+     * @return: Value
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:11
      */
     public Value delete(Key key) {
         return st.remove(key);
     }
 
     /**
-     * Is the key in the table?
+     * @description: 判断是否包含相应的建
+     * @param: [key]
+     * @return: boolean
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:11
      */
     public boolean contains(Key key) {
         return st.containsKey(key);
     }
 
     /**
-     * How many keys are in the table?
+     * @description: 得到健的个数
+     * @param: []
+     * @return: int
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:12
      */
     public int size() {
         return st.size();
     }
 
     /**
-     * Return an <tt>Iterable</tt> for the keys in the table.
-     * To iterate over all of the keys in the symbol table <tt>st</tt>, use the
-     * foreach notation: <tt>for (Key key : st.keys())</tt>.
+     * @description: 得到迭代器，能够使用 foreach 进行遍历
+     * @param: []
+     * @return: java.lang.Iterable<Key>
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:12
      */
     public Iterable<Key> keys() {
         return st.keySet();
     }
 
     /**
-     * Return an <tt>Iterator</tt> for the keys in the table.
-     * To iterate over all of the keys in the symbol table <tt>st</tt>, use the
-     * foreach notation: <tt>for (Key key : st)</tt>.
-     * This method is for backward compatibility with the version from <em>Introduction
-     * to Programming in Java: An Interdisciplinary Approach.</em>
+     * @description: 能够通过 foreach 进行遍历
+     * @param: []
+     * @return: java.util.Iterator<Key>
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:16
      */
     public Iterator<Key> iterator() {
         return st.keySet().iterator();
     }
 
     /**
-     * Return the smallest key in the table.
+     * @description: 返回最小的健
+     * @param: []
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:13
      */
     public Key min() {
         return st.firstKey();
     }
 
     /**
-     * Return the largest key in the table.
+     * @description: 返回最大的键
+     * @param: []
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:14
      */
     public Key max() {
         return st.lastKey();
@@ -90,7 +119,12 @@ public class ST<Key extends Comparable<Key>,Value> implements Iterable<Key> {
 
 
     /**
-     * Return the smallest key in the table >= k.
+     * @description: 返回大于 k 的最小的键
+     * @param: [k]
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:14
      */
     public Key ceil(Key k) {
         SortedMap<Key, Value> tail = st.tailMap(k);
@@ -99,11 +133,15 @@ public class ST<Key extends Comparable<Key>,Value> implements Iterable<Key> {
     }
 
     /**
-     * Return the largest key in the table <= k.
+     * @description: 返回大于 k 的最大的键
+     * @param: [k]
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:14
      */
     public Key floor(Key k) {
         if (st.containsKey(k)) return k;
-        // does not include key if present (!)
         SortedMap<Key, Value> head = st.headMap(k);
         if (head.isEmpty()) return null;
         else return head.lastKey();

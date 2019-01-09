@@ -3,6 +3,7 @@ package datastructure.symboltable;
 import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
 /*************************************************************************
  *
  *  通过 Set 实现符号表
@@ -20,56 +21,92 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
-     * Add the key to this set.
+     * @description: 添加健到集合中
+     * @param: [key]
+     * @return: void
+     * @author: 李学亮
+     * @date: 2019/1/9
      */
     public void add(Key key) {
         set.add(key);
     }
 
     /**
-     * Does this set contain the given key?
+     * @description: 判断是否包含该健
+     * @param: [key]
+     * @return: boolean
+     * @author: 李学亮
+     * @date: 2019/1/9
      */
     public boolean contains(Key key) {
         return set.contains(key);
     }
 
     /**
-     * Delete the given key from this set.
+     * @description: 删除指定的健
+     * @param: [key]
+     * @return: void
+     * @author: 李学亮
+     * @date: 2019/1/9
      */
     public void delete(Key key) {
         set.remove(key);
     }
 
     /**
-     * Return the number of keys in this set.
+     * @description: 返回键的个数
+     * @param: []
+     * @return: int
+     * @author: 李学亮
+     * @date: 2019/1/9
      */
     public int size() {
         return set.size();
     }
 
     /**
-     * Return an Iterator for this set.
+     * @description: 返回迭代器
+     * @param: []
+     * @return: java.util.Iterator<Key>
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 19:42
      */
     public Iterator<Key> iterator() {
         return set.iterator();
     }
 
     /**
-     * Return the key in this set with the maximum value.
+     * @description: 返回最大值对应的健
+     * @param: []
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 19:43
      */
     public Key max() {
         return set.last();
     }
 
     /**
-     * Return the key in this set with the minimum value.
+     * @description: 返回最小值对应的健
+     * @param: []
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 19:43
      */
     public Key min() {
         return set.first();
     }
 
     /**
-     * Return the smallest key in this set >= k.
+     * @description: 返回最小的健在大于 k 的范围内
+     * @param: [k]
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 19:44
      */
     public Key ceil(Key k) {
         SortedSet<Key> tail = set.tailSet(k);
@@ -78,7 +115,12 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
-     * Return the largest key in this set <= k.
+     * @description: 返回最大的健在大于 k 的范围内
+     * @param: [k]
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 19:44
      */
     public Key floor(Key k) {
         if (set.contains(k)) return k;
@@ -90,7 +132,12 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
-     * Return the union of this set with that set.
+     * @description: 连接两个集合
+     * @param: [that]
+     * @return: datastructure.symboltable.SET<Key>
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:07
      */
     public SET<Key> union(SET<Key> that) {
         SET<Key> c = new SET<>();
@@ -104,7 +151,12 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
-     * Return the intersection of this set with that set.
+     * @description: 返回两个集合相同的部分
+     * @param: [that]
+     * @return: datastructure.symboltable.SET<Key>
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:09
      */
     public SET<Key> intersect(SET<Key> that) {
         SET<Key> c = new SET<>();
@@ -112,8 +164,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
             for (Key x : this) {
                 if (that.contains(x)) c.add(x);
             }
-        }
-        else {
+        } else {
             for (Key x : that) {
                 if (this.contains(x)) c.add(x);
             }
@@ -122,7 +173,12 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
-     * Does this SET equal that set.
+     * @description: 判断两个集合是否相等
+     * @param: [y]
+     * @return: boolean
+     * @author: 李学亮
+     * @date: 2019/1/9
+     * @time: 20:09
      */
     public boolean equals(Object y) {
         if (y == this) return true;

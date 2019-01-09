@@ -49,20 +49,27 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * @Description: 主方法
+     * @Param: [args]
+     * @return: void
+     * @Author: 李学亮
+     * @Date: 2019/1/8
+     */
     public static void main(String[] args) {
         int[] data = {1, 5, 6, 12, 15, 19, 23, 26, 30, 33, 37, 42, 53, 60};
         int target = 19;
         int index = searchRecursion(data, 0, data.length - 1, target);
         if (index > -1) {
             System.out.println("found ：" + index);
-        }else {
+        } else {
             System.out.println("not found");
         }
         System.out.println("==========================================");
         index = searchLoop(data, 0, data.length - 1, target);
         if (index > -1) {
             System.out.println("found ：" + index);
-        }else {
+        } else {
             System.out.println("not found");
         }
     }
