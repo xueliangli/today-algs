@@ -13,7 +13,7 @@ public class QueueTest {
         for (int i = 0; i < 10; i++) {
             ints.enqueue(i);
         }
-        ints.displayList();
+//        ints.displayList();
     }
     /**
      * 出错原因：

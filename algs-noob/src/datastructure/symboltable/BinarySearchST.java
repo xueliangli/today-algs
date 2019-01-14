@@ -1,9 +1,6 @@
 package datastructure.symboltable;
 
-import utils.StringTxtToArrayUtil;
-
-import java.io.FileNotFoundException;
-import java.util.List;
+import datastructure.queue.Queue;
 
 /**
  * @program: algs-noob
@@ -195,35 +192,91 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * @description: 简单测试
-     * @param: [args]
-     * @return: void
+     * @description: 返回最小值和最大值
+     * @param: []
+     * @return: Key
      * @author: 李学亮
      * @date: 2019/1/14
-     * @time: 20:23
+     * @time: 21:35
      */
-    public static void main(String[] args) throws FileNotFoundException {
-        List<String> strList = StringTxtToArrayUtil.toArray("algs4/3-Searching/3-1-SymbolTables/tale.txt");
-        BinarySearchST<String, Integer> bst = new BinarySearchST<>();
-        //将长度大于8的单词及存在的次数存放到符号表中
-        for (String s : strList) {
-            if (s.length() < 8) continue;
-            //第一次出现的单词设置值为 1
-            if (!bst.contains(s)) {
-                bst.put(s, 1);
-            } else {
-                bst.put(s, bst.get(s) + 1);
-            }
-        }
-        //显示所有长度大于8的单词及其出现的次数
-        for (String s : bst.getKeys()) {
-            System.out.println(s + " === " + bst.get(s));
-        }
+    public Key min() {
+        if (isEmpty()) return null;
+        return keys[0];
+    }
+
+    public Key max() {
+        if (isEmpty()) return null;
+        return keys[N - 1];
+    }
+
+    public Key select(int k) {
+        if (k < 0 || k >= N) return null;
+        return keys[k];
+    }
+
+    /**
+     * @description: 向上向下浮动
+     * @param: [key]
+     * @return: Key
+     * @author: 李学亮
+     * @date: 2019/1/14
+     * @time: 21:35
+     */
+    public Key floor(Key key) {
+        int i = rank(key);
+        if (i < N && key.compareTo(keys[i]) == 0) return keys[i];
+        if (i == 0) return null;
+        else return keys[i - 1];
+    }
+
+    public Key ceiling(Key key) {
+        int i = rank(key);
+        if (i == N) return null;
+        else return keys[i];
+    }
+
+    /**
+     * @description: 返回指定位置间的长度
+     * @param: [lo, hi]
+     * @return: int
+     * @author: 李学亮
+     * @date: 2019/1/14
+     * @time: 21:36
+     */
+    public int size(Key lo, Key hi) {
+        if (lo.compareTo(hi) > 0) return 0;
+        if (contains(hi)) return rank(hi) - rank(lo) + 1;
+        else return rank(hi) - rank(lo);
+    }
+
+    /**
+     * @description: 得到所有的键，并放到可以foreach的迭代器中
+     * @param: []
+     * @return: java.lang.Iterable<Key>
+     * @author: 李学亮
+     * @date: 2019/1/14
+     * @time: 21:37
+     */
+    public Iterable<Key> keys() {
+        return keys(min(), max());
+    }
+
+    public Iterable<Key> keys(Key lo, Key hi) {
+        Queue<Key> queue = new Queue<>();
+        if (lo == null && hi == null) return queue;
+        if (lo == null) throw new RuntimeException("lo is null in keys()");
+        if (hi == null) throw new RuntimeException("hi is null in keys()");
+        if (lo.compareTo(hi) > 0) return queue;
+        for (int i = rank(lo); i < rank(hi); i++)
+            queue.enqueue(keys[i]);
+        if (contains(hi)) queue.enqueue(keys[rank(hi)]);
+        return queue;
     }
 }
 /*
  * Exception in thread "main" java.lang.ClassCastException: [Ljava.lang.Comparable; cannot be cast to [Ljava.lang.String;
  * at datastructure.symboltable.BinarySearchST.main(BinarySearchST.java:219)
  *
+ * 原因：类型不匹配
  * 报错
  * */
