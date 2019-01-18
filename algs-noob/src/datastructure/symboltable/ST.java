@@ -1,5 +1,6 @@
 package datastructure.symboltable;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
