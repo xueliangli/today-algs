@@ -3,7 +3,6 @@ package algs.sort;
 public class MergeSort {
     /**
      * 将一个数组中的两个相邻有序区间合并成一个
-     * <p>
      * 参数说明：
      *
      * @param a     包含两个有序区间的数组

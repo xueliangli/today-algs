@@ -32,8 +32,4 @@ public class First_094 {
             }
         }
     }
-
-    public static void main(String[] args) {
-
-    }
 }

@@ -20,7 +20,6 @@ import java.util.NoSuchElementException;
  * 6、用于判断队列是否为空，返回元素个数的方法
  *************************************************************************/
 //能够foreach
-    //TODO:未测试
 public class Queue<Item> implements Iterable<Item> {
     /**
      * @description: 数据结构的雏形
@@ -34,7 +33,7 @@ public class Queue<Item> implements Iterable<Item> {
     private Node<Item> first;
     private Node<Item> last;
 
-    private class Node<Item> {
+    private static class Node<Item> {
         private Item item;
         private Node<Item> next;
     }
@@ -135,10 +134,10 @@ public class Queue<Item> implements Iterable<Item> {
      * @time: 22:01
      */
     public Iterator<Item> iterator() {
-        return new ListIterator<Item>(first);
+        return new ListIterator(first);
     }
 
-    private class ListIterator<Item> implements Iterator<Item> {
+    private class ListIterator implements Iterator<Item> {
         private Node<Item> current;
 
         public ListIterator(Node<Item> first) {
